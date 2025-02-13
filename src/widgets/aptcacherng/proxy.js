@@ -1,7 +1,8 @@
+import { parse } from "node-html-parser";
+
 import { formatApiCall } from "utils/proxy/api-helpers";
 import { httpProxy } from "utils/proxy/http";
 import createLogger from "utils/logger";
-import { parse } from 'node-html-parser';
 import widgets from "widgets/widgets";
 import getServiceWidget from "utils/config/service-helpers";
 
@@ -21,7 +22,7 @@ export default async function aptcacherngProxyHandler(req, res) {
   }
 
   const url = formatApiCall(api, widget);
-  const [status, _, data] = await httpProxy(url);
+  const [status, contentType, data] = await httpProxy(url);
 
   if (status !== 200) {
     logger.debug("Error %d calling apt-cacher-ng endpoint %s", status, url);
@@ -30,12 +31,12 @@ export default async function aptcacherngProxyHandler(req, res) {
 
   try {
     const root = parse(data.toString());
-    const html = root.querySelector('html');
-    const table = html.querySelector('table');
-    const stats = table.querySelectorAll('.colcont');
+    const html = root.querySelector("html");
+    const table = html.querySelector("table");
+    const stats = table.querySelectorAll(".colcont");
 
     if (stats.length !== 4) {
-      throw new Error('Could not find expected statistics');
+      throw new Error("Could not find expected statistics");
     }
 
     const response = {
@@ -44,6 +45,8 @@ export default async function aptcacherngProxyHandler(req, res) {
       servedOverall: stats[2].innerText.trim(),
       servedRecently: stats[3].innerText.trim(),
     };
+
+    if (contentType) res.setHeader("Content-Type", contentType);
 
     return res.status(200).json(response);
   } catch (error) {

@@ -26,10 +26,10 @@ export default function Component({ service }) {
 
   return (
     <Container service={service}>
-      <Block label="aptcacherng.fetched_overall" value={data.fetchedOverall} />
-      <Block label="aptcacherng.served_overall" value={data.servedOverall} />
-      <Block label="aptcacherng.fetched_recently" value={data.fetchedRecently} />
-      <Block label="aptcacherng.served_recently" value={data.servedRecently} />
+      <Block label="aptcacherng.fetched_overall" value={t("common.number", { value: data.fetchedOverall })} />
+      <Block label="aptcacherng.served_overall" value={t("common.number", { value: data.servedOverall })} />
+      <Block label="aptcacherng.fetched_recently" value={t("common.number", { value: data.fetchedRecently })} />
+      <Block label="aptcacherng.served_recently" value={t("common.number", { value: data.servedRecently })} />
     </Container>
   );
 }

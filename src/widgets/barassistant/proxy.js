@@ -14,7 +14,11 @@ async function login(widget, service) {
   const endpoint = "auth/login";
   const api = widgets?.[widget.type]?.api;
   const loginUrl = new URL(formatApiCall(api, { endpoint, ...widget }));
-  const loginBody = { email: widget.username, password: widget.password, token_name: `homepage-${new Date().getTime()}` };
+  const loginBody = {
+    email: widget.username,
+    password: widget.password,
+    token_name: `homepage-${new Date().getTime()}`
+  };
   const headers = { "Content-Type": "application/json" };
 
   const [status, , data] = await httpProxy(loginUrl, {
@@ -31,7 +35,9 @@ async function login(widget, service) {
   }
 
   try {
-    const { data: { token } } = JSON.parse(data.toString());
+    const {
+      data: { token }
+    } = JSON.parse(data.toString());
     cache.put(`${sessionTokenCacheKey}.${service}`, token);
     return { token };
   } catch (e) {

@@ -1,5 +1,3 @@
-import { valid } from "node-html-parser";
-import { asJson } from "utils/proxy/api-helpers";
 import credentialedProxyHandler from "utils/proxy/handlers/credentialed";
 
 const widget = {
