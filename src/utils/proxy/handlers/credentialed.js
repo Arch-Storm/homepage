@@ -49,6 +49,7 @@ export default async function credentialedProxyHandler(req, res, map) {
           "pterodactyl",
           "vikunja",
           "firefly",
+          "coolify"
         ].includes(widget.type)
       ) {
         headers.Authorization = `Bearer ${widget.key}`;
@@ -58,6 +59,8 @@ export default async function credentialedProxyHandler(req, res, map) {
         } else {
           headers.Authorization = `Basic ${Buffer.from(`${widget.username}:${widget.password}`).toString("base64")}`;
         }
+      } else if (widget.type === "n8n") {
+        headers["X-N8N-API-KEY"] = `${widget.key}`;
       } else if (widget.type === "proxmox") {
         headers.Authorization = `PVEAPIToken=${widget.username}=${widget.password}`;
       } else if (widget.type === "proxmoxbackupserver") {

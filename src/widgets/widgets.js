@@ -1,10 +1,12 @@
 import adguard from "./adguard/widget";
+import aptcacherng from "./aptcacherng/widget";
 import argocd from "./argocd/widget";
 import atsumeru from "./atsumeru/widget";
 import audiobookshelf from "./audiobookshelf/widget";
 import authentik from "./authentik/widget";
 import autobrr from "./autobrr/widget";
 import azuredevops from "./azuredevops/widget";
+import barassistant from "./barassistant/widget";
 import bazarr from "./bazarr/widget";
 import beszel from "./beszel/widget";
 import caddy from "./caddy/widget";
@@ -14,6 +16,7 @@ import changedetectionio from "./changedetectionio/widget";
 import channelsdvrserver from "./channelsdvrserver/widget";
 import cloudflared from "./cloudflared/widget";
 import coinmarketcap from "./coinmarketcap/widget";
+import coolify from "./coolify/widget";
 import crowdsec from "./crowdsec/widget";
 import customapi from "./customapi/widget";
 import deluge from "./deluge/widget";
@@ -65,6 +68,7 @@ import mjpeg from "./mjpeg/widget";
 import moonraker from "./moonraker/widget";
 import mylar from "./mylar/widget";
 import myspeed from "./myspeed/widget";
+import n8n from "./n8n/widget";
 import navidrome from "./navidrome/widget";
 import netalertx from "./netalertx/widget";
 import netdata from "./netdata/widget";
@@ -134,12 +138,14 @@ import zabbix from "./zabbix/widget";
 
 const widgets = {
   adguard,
+  aptcacherng,
   argocd,
   atsumeru,
   audiobookshelf,
   authentik,
   autobrr,
   azuredevops,
+  barassistant,
   bazarr,
   beszel,
   caddy,
@@ -148,6 +154,7 @@ const widgets = {
   channelsdvrserver,
   cloudflared,
   coinmarketcap,
+  coolify,
   crowdsec,
   customapi,
   deluge,
@@ -201,6 +208,7 @@ const widgets = {
   moonraker,
   mylar,
   myspeed,
+  n8n,
   navidrome,
   netalertx,
   netdata,
