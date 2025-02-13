@@ -17,7 +17,7 @@ async function login(widget, service) {
   const loginBody = {
     email: widget.username,
     password: widget.password,
-    token_name: `homepage-${new Date().getTime()}`
+    token_name: `homepage-${new Date().getTime()}`,
   };
   const headers = { "Content-Type": "application/json" };
 
@@ -36,7 +36,7 @@ async function login(widget, service) {
 
   try {
     const {
-      data: { token }
+      data: { token },
     } = JSON.parse(data.toString());
     cache.put(`${sessionTokenCacheKey}.${service}`, token);
     return { token };
